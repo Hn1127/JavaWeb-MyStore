@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pers.MyStore.mapper.UserHistoryMapper">
+
+	<select id="findAll" resultType="com.pers.MyStore.entity.User">
+		SELECT * FROM userhistory;
+	</select>
+
+	<insert id="addHistory">
+		INSERT INTO userhistory
+		(user_id, product_id, `time`)
+		VALUES(#{user_id}, #{product_id}, CURRENT_TIMESTAMP)
+		ON DUPLICATE KEY UPDATE
+		time = CURRENT_TIMESTAMP;
+	</insert>
+	
+	<select id="findHistoryByUserId">
+		SELECT userhistory.*, product.product_name
+		FROM userhistory left join product on userhistory.product_id=product.product_id
+		WHERE user_id=#{user_id}
+		order by time desc
+		
+	</select>
+
+</mapper>

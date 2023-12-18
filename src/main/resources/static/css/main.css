@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+body,
+html {
+	background-color: white;
+	font-family: 新宋体;
+	height: 100%;
+	width: 100%;
+}
+
+a{
+	text-decoration:none;
+	color: black;
+}
+
+.main{
+	text-align:center;
+	background-color:white;
+	height: 100%;
+    margin: 0;
+    gap:calc();
+}
+

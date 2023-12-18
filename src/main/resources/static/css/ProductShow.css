@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+a{
+	text-decoration:none;
+	color: black;
+}
+
+.ProductShow {
+	display: grid;
+	width: 1200px;
+	margin: auto;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 20px;
+	padding: 20px;
+}
+
+.product {
+	border: 1px solid #ddd;
+	padding: 15px;
+	text-align: left;
+	height: 240px;
+}
+
+.product_img{
+	height:180px;
+	margin:auto;
+}
+
+.product_info{
+	padding-top: 3px;
+	font-size:115%;
+	height: 40px;
+	white-space: normal;
+}
+
+.product_price{
+	font-size: 125%;
+	color: orange;
+}

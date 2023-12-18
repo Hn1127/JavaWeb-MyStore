@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pers.MyStore.mapper.UserMapper">
+
+	<select id="findAll" resultType="com.pers.MyStore.entity.User">
+		SELECT * FROM `user`;
+	</select>
+	
+	<select id="findByMutiConditions" resultType="com.pers.MyStore.entity.User">
+		SELECT * FROM `user`
+		<where>
+			<if test="uin != null and uin != ''">
+				and uin=#{uin}
+			</if>
+			<if test="username != null and username != ''">
+				and username like '%${username}%'
+			</if>
+			<if test="email != null and email != ''" >
+				and email like '%${email}%'
+			</if>
+			<if test="nickname != null and nickname != ''">
+				and nickname like '%${nickname}%'
+			</if>
+			<if test="registerDateLowerBound != null">
+				and register_time &gt;= #{registerDateLowerBound}
+			</if>
+			<if test="registerDateUpperBound != null">
+				and register_time &lt;= #{registerDateUpperBound}
+			</if>
+		</where>
+	</select>
+
+	<select id="findByUsername"
+		resultType="com.pers.MyStore.entity.User">
+		select * from `user`
+		where username=#{username}
+	</select>
+	
+	<select id="findUserByUsernameValid"
+		resultType="com.pers.MyStore.entity.User">
+		select * from `user`
+		where username=#{username} and password!='0'
+	</select>
+	
+	<select id="userCountValid">
+		select COUNT(*)
+		from `user`
+		where password!='0'
+	</select>
+
+	<select id="findUserById"
+		resultType="com.pers.MyStore.entity.User">
+		select * from `user` where uin=#{uin}
+	</select>
+
+	<update id="nicknameUpdate">
+		UPDATE `user`
+		SET nickname=#{nickname}
+		WHERE uin=#{user_id};
+	</update>
+
+	<update id="passwordUpdate">
+		UPDATE `user`
+		SET password=#{password}
+		WHERE uin=#{user_id};
+	</update>
+
+	<update id="emailUpdate">
+		UPDATE `user`
+		SET email=#{email}
+		WHERE uin=#{user_id};
+	</update>
+
+	<insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+		insert 
+		into `user`
+		(username,password,uin,email,nickname,register_time)
+		values 
+		(#{username},#{password},#{uin},#{email},#{nickname},#{date})
+	</insert>
+
+	<select id="checkUser" resultType="com.pers.MyStore.entity.User">
+		select * from `user` where 1=1
+		and username=#{username}
+		and password=#{password}
+	</select>
+
+</mapper>
