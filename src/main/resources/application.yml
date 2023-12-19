@@ -1,0 +1,42 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+  servlet:
+    context-path: /
+    
+
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  #数据库连接配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/mystore
+    username: root
+    password: Sanduo520!
+  #网络静态资源配置
+  web:
+    resources:
+      static-locations: classpath:static/, file:static
+      
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+    
+  mail:
+    host: smtp.qq.com
+    username: 2909448453@qq.com
+    password: mvgdcgfntvynddhd
+    properties:
+      mail:
+        smtp:
+          ssl: 
+            enable: true
+
+  #Mybatis
+mybatis:
+  #mapper映射文件地址
+  mapper-locations: classpath:mapper/*.xml

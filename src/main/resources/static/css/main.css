@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+body,
+html {
+	background-color: white;
+	font-family: 新宋体;
+	height: 100%;
+	width: 100%;
+	min-width: 1920px;
+	min-height: 1080px;
+}
+
+a{
+	text-decoration:none;
+	color: black;
+}
+
+.main{
+	text-align:center;
+	background-color:white;
+	height: 100%;
+    margin: 0;
+    gap:calc();
+    
+}
+
