@@ -15,12 +15,14 @@
 
 
 运行前请注意：
+
 1.修改/src/main/application.yml第15-18行(数据库连接配置)；
 
 2.修改/src/main/application.yml第30-32行(邮件发送配置)；
 
 3.修改/src/main/application.yml中第22行的file:/路径为你想映射为web资源访问地址的本地路径；
   如：file:static时，我将jar包放在/demo下运行，则web会从/demo/static/下获取资源(image、css、js等)；
+  若想直接使用网页的上传商品图片功能而不做任何更改，请与jar包同一目录下建立/static/images/proaducts目录
 	
 4.导入数据库表结构后，在运行该spring boot程序前，请为table mystore.productType添加至少一个元组，否则jsp页面会报错，该问题由于时间原因尚未解决；
 
